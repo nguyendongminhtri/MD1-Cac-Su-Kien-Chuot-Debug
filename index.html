@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>1. Bắt sự kiện chuột: onclick(HTML) - click($Event)</h1>
+<p onclick="showAlert()">Cach 1: Bat truc tiep tu the</p>
+<p id="click">Cach2: Bắt thông qua hàm addEventListener()</p>
+<hr>
+<h1>2. Bắt sự kiện chuột: onchange(HTML) - change($Event)</h1>
+<p>Cách 1: Bắt thông qua onchange HTML</p>
+<select id="myChange" onchange="onChangeHTML()">
+    <option value="Trần Hà">Trần Hà</option>
+    <option value="Định">Định</option>
+    <option value="Minh Hằng">Minh Hằng</option>
+</select>
+<p>Cách 2: Bắt thông qua change - addEventListener(): </p>
+<select  id="myChange2">
+    <option value="Hồng Ngọc">Hồng Ngọc</option>
+    <option value="Huyền Trâm">Huyền Trâm</option>
+    <option value="Thanh Hải">Thanh Hải</option>
+</select>
+<hr>
+<h1>3. Bắt sự kiện onmoseover - onmoseout (HTML) - moseover - moseout $EVENT</h1>
+<p onmouseover="onmouseoverHTML()" onmouseout="onmouseoutHTML()" id="myOver">Cách 1: Bắt onmoseover - onmoseout HTML</p>
+<p id="myMouse">Cách 2: Sử dụng mouseover - mouseout $EVENT</p>
+<hr>
+<h1>4. DEBUG (CÁC CÁCH FIXBUG DÙNG WEBSTORM)</h1>
+</body>
+</html>
+<script>
+    // BẮT SỰ KIỆN CHUỘT : onclik
+    //Cach 1
+    function showAlert() {
+        alert('Hello PF1221R2')
+    }
+    //Cach 2
+    let click = document.getElementById('click');
+    click.addEventListener('click',showAlert)
+    //BẮT SỰ KIỆN THAY ĐỔI VALUE: onchange
+    //Cach 1: sử dụng onchange (HTML)
+    function onChangeHTML() {
+        let myChange = document.getElementById('myChange').value;
+        alert(myChange);
+    }
+    //Cách 2: Sử dụng change : addEventListener();
+    let myChange2 = document.getElementById('myChange2');
+    myChange2.addEventListener('change',changeEvent)
+    function changeEvent(){
+        let myChange2Value = document.getElementById('myChange2').value;
+       alert(myChange2Value);
+    }
+    //BẮT SỰ KIỆN onmoseover - onmouseout HTML <=> mouseover - mouseout : addEventListener();
+    //Cách 1: onmouseover - onmouseout HTML
+    function onmouseoverHTML() {
+        let over = document.getElementById('myOver');
+        over.style.color = 'red';
+    }
+    function onmouseoutHTML() {
+        let out = document.getElementById('myOver');
+        out.style.color = 'blue';
+    }
+    //Cách 2: mouseover - mouseout addEventListener();
+    let myMouse = document.getElementById('myMouse');
+    myMouse.addEventListener('mouseover',mouseOverEVENT)
+    myMouse.addEventListener('mouseout',mouseOutEVENT)
+    function mouseOverEVENT() {
+        myMouse.style.color = 'green'
+    }
+    function mouseOutEVENT() {
+        myMouse.style.color ='#80005c'
+    }
+    //CÓ 3 CÁCH DEBUG
+    //Cách 1: Đặt debugger chạy trình duyệt và nhất phím F5 lại sau đó ấn sang thẻ source để debug
+    // debugger
+    let a =1;
+    console.log('a = ', a)
+    let b = 2;
+    console.log('b = ',b)
+    let c = a + b;
+    console.log('c = ',c)
+    document.write('c = '+c)
+    //Cách 2: Đặt break point trực tiếp vào dòng trên webstorm sau đó phải chuột chọn con bọ
+    //Cách 3: Hay sử dụng đặt console.log() trực tiếp tại dòng ta muốn lấy giá trị
+</script>
